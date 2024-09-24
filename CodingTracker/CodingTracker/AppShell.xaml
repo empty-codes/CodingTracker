@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CodingTracker.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:CodingTracker.Views"
+    Title="CodingTracker">
+
+    <FlyoutItem Title="Real-Time Coding Tracker">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:CatsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Set Coding Goals">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:CatsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Coding Sessions">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:CatsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Reports">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:CatsPage}" />
+        </Tab>
+    </FlyoutItem>
+    
+    <MenuItem Text="Exit"
+              IconImageSource="help.png"
+              Command="{Binding HelpCommand}"
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />
+
+
+
+</Shell>
