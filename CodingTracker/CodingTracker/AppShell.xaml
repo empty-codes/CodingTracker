@@ -12,16 +12,8 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Coding Sessions">
-            <ShellContent Title="View All"
-                          ContentTemplate="{DataTemplate views:ViewAllSessionsPage}" />
-            <ShellContent Title="Insert"
-                          ContentTemplate="{DataTemplate views:InsertSessionPage}" />
-            <ShellContent Title="Update"
-              ContentTemplate="{DataTemplate views:UpdateSessionPage}" />
-            <ShellContent Title="Delete"
-              ContentTemplate="{DataTemplate views:DeleteSessionPage}" />
-        </Tab>
+        <ShellContent Title="Coding Sessions"
+              ContentTemplate="{DataTemplate views:ViewAllSessionsPage}" />
         <ShellContent Title="Real-Time Tracker"
                       ContentTemplate="{DataTemplate views:RealTimeTrackerPage}" />
         <ShellContent Title="Coding Goals"

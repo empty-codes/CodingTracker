@@ -38,7 +38,7 @@ namespace CodingTracker.ViewModels
         public ICommand StartCommand { get; private set; }
         public ICommand StopCommand { get; private set; }
 
-        public void Start()
+        private void Start()
         {
             if (IsRunning == false)
             {
@@ -55,7 +55,7 @@ namespace CodingTracker.ViewModels
             }
         }
 
-        public void Stop()
+        private void Stop()
         {
             if (IsRunning == true)
             {

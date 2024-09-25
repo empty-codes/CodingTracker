@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:CodingTracker.ViewModels"
+             x:Class="CodingTracker.Views.CodingSessionPage"
+             Title="Session">
+    <ContentPage.BindingContext>
+        <viewModels:CodingSessionViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10" Margin="5">
+        <Entry x:Name="StartTimeEntry"
+               Placeholder="Enter the new start time using the 24H format (yyyy-MM-dd HH:mm)"
+               Text="{Binding StartTime}"
+               HeightRequest="40" />
+
+        <Entry x:Name="EndTimeEntry"
+               Placeholder="Enter the new end time using the 24H format (yyyy-MM-dd HH:mm)"
+               Text="{Binding EndTime}"
+               HeightRequest="40" />
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+            <Button Text="Update"
+                    Command="{Binding UpdateCommand}"/>
+
+            <Button Grid.Column="1"
+                    Text="Delete"
+                    Command="{Binding DeleteCommand}"/>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

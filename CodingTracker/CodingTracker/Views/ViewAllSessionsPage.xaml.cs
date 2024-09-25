@@ -6,4 +6,9 @@ public partial class ViewAllSessionsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        sessionsCollection.SelectedItem = null;
+    }
 }

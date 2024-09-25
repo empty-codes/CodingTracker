@@ -1,22 +1,15 @@
 ﻿using Microsoft.Data.Sqlite;
 using Dapper;
 using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System;
 
-namespace CodingTracker.Models
-{
+namespace CodingTracker.Models;
+
     internal class CodingSession
     {
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public TimeSpan Duration { get; set; }
-
-        public CodingSession()
-        {
-
-        }
 
         public void CalculateDuration()
         {
@@ -55,7 +48,7 @@ namespace CodingTracker.Models
             }
         }
 
-        public List<CodingSession> ViewAllSessions()
+        public static List<CodingSession> ViewAllSessions()
         {
             var sessions = new List<CodingSession>();
             using var conn = new SqliteConnection(App.ConnectionString);
@@ -134,4 +127,4 @@ namespace CodingTracker.Models
             }
         }
     }
-}
+

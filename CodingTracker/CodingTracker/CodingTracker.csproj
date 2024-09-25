@@ -81,6 +81,9 @@
 	  <MauiXaml Update="Views\CodingGoalsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CodingSessionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DeleteSessionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
