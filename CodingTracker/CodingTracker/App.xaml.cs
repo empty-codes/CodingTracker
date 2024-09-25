@@ -19,14 +19,13 @@ namespace CodingTracker
 
         private void CreateDatabase()
         {
-            ConnectionString = "Data Source=coding_tracker.db";
             DateFormat = "yyyy-MM-dd HH:mm";
-            DatabasePath = "coding_tracker.db";
+            DatabasePath = Path.Combine(FileSystem.AppDataDirectory, "coding_tracker.db");
+            ConnectionString = "Data Source={DatabasePath}";
 
             if (File.Exists(DatabasePath))
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabasePath);
-                Debug.WriteLine($"Database file {dbPath} already exists.");
+                Debug.WriteLine($"Database file {DatabasePath} already exists.");
             }
             else
             {
