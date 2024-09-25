@@ -2,7 +2,7 @@ namespace CodingTracker.Views;
 
 public partial class ViewAllSessionsPage : ContentPage
 {
-	public ViewAllSessionsPage()
+    public ViewAllSessionsPage()
 	{
 		InitializeComponent();
 	}
@@ -11,4 +11,5 @@ public partial class ViewAllSessionsPage : ContentPage
     {
         sessionsCollection.SelectedItem = null;
     }
+
 }

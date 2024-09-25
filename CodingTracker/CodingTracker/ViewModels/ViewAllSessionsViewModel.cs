@@ -2,10 +2,11 @@
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using CodingTracker.Models;
+using System.Diagnostics;
 
 namespace CodingTracker.ViewModels;
 
-internal class ViewAllSessionsViewModel
+internal class ViewAllSessionsViewModel : IQueryAttributable
 {
     public ObservableCollection<ViewModels.CodingSessionViewModel> AllSessions { get; }
     public ICommand NewCommand { get; }
@@ -27,8 +28,48 @@ internal class ViewAllSessionsViewModel
     {
         if(session != null)
         {
-            Shell.Current.GoToAsync($"{nameof(Views.CodingSessionPage)}?id={session.Id}");
+            Shell.Current.GoToAsync($"{nameof(Views.CodingSessionPage)}?load={session.Id}");
         }
     }
+
+    void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.ContainsKey("deleted"))
+        {
+            string sessionId = query["deleted"].ToString();
+            CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
+
+            // If session exists, delete it
+            if (matchedSession != null)
+                AllSessions.Remove(matchedSession);
+        }
+        else if (query.ContainsKey("saved"))
+        {
+            string sessionId = query["saved"].ToString();
+
+            // Convert sessionId to an integer
+            if (int.TryParse(sessionId, out int id))
+            {
+                CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
+
+                // If session is found, update it
+                if (matchedSession != null)
+                {
+                    matchedSession.Reload();
+                    AllSessions.Move(AllSessions.IndexOf(matchedSession), 0);
+                }
+                // If session isn't found, it's new; add it.
+                else
+                {
+                    AllSessions.Insert(0, new CodingSessionViewModel(Models.CodingSession.LoadSession(id)));
+                }
+            }
+            else
+            {
+                Debug.WriteLine("Invalid session ID format.");
+            }
+        }
+    }
+
 }
 
