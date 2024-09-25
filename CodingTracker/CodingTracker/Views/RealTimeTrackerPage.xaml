@@ -9,6 +9,11 @@
     </ContentPage.BindingContext>
     <VerticalStackLayout Spacing="10" Margin="5">
 
+        <Label Text="{Binding StopwatchStatus}" 
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center" />
+        
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
             <Button Text="Start Stopwatch"
                 Command="{Binding StartCommand}"/>

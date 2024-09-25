@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace CodingTracker.ViewModels
 {
-    internal class RealTimeTrackerViewModel
+    internal class RealTimeTrackerViewModel: ObservableObject
     {
         private Models.CodingSession codingSession;
 
@@ -14,12 +14,25 @@ namespace CodingTracker.ViewModels
         public DateTime EndTime { get; set; }
         public TimeSpan Duration { get; set; }
         public bool IsRunning { get; set; }
+        private string status;
+        public string StopwatchStatus {
+            get => status;
+            set
+            {
+                if(status != value)
+                {
+                    status = value;
+                    OnPropertyChanged();
+                }
+            }
+        } 
 
         public RealTimeTrackerViewModel()
         {
             StopWatch = new Stopwatch();
             StartCommand = new RelayCommand(Start);
             StopCommand = new RelayCommand(Stop);
+            StopwatchStatus = "Stopwatch is not running.";
         }
 
         public ICommand StartCommand { get; private set; }
@@ -33,12 +46,12 @@ namespace CodingTracker.ViewModels
                 StopWatch.Start();
                 IsRunning = true;
                 Debug.WriteLine("Stopwatch started.");
-                //AnsiConsole.MarkupLine("[green]The stopwatch has started counting![/]");
+                StopwatchStatus = "Stopwatch is running.";
             }
             else
             {
+                StopwatchStatus = "Stopwatch is already running.";
                 Debug.WriteLine("Stopwatch is already running.");
-                //AnsiConsole.MarkupLine("[yellow]The stopwatch is already running[/]");
             }
         }
 
@@ -50,14 +63,14 @@ namespace CodingTracker.ViewModels
                 StopWatch.Stop();
                 IsRunning = false;
                 Debug.WriteLine("Stopwatch stopped.");
-                //AnsiConsole.MarkupLine("\n[green]The stopwatch has stopped![/]");
+                StopwatchStatus = "Stopwatch is not running.";
                 CalculateDuration();
                 Save();
             }
             else
             {
+                StopwatchStatus = "Stopwatch is already stopped.";
                 Debug.WriteLine("Stopwatch is already stopped.");
-                //AnsiConsole.MarkupLine("\n[yellow]The stopwatch has already ended[/]");
             }
         }
 
@@ -68,8 +81,6 @@ namespace CodingTracker.ViewModels
             codingSession.EndTime = EndTime;
             codingSession.Duration = Duration;
             codingSession.InsertSession(codingSession);
-
-            Debug.WriteLine("Insert Session method succesfully called.");
         }
 
         public void CalculateDuration()
@@ -77,7 +88,6 @@ namespace CodingTracker.ViewModels
             if (IsRunning == true)
             {
                 Debug.WriteLine("Stop the stopwatch first!.");
-                //AnsiConsole.MarkupLine("[red]Error: Stop the stopwatch first![/]");
             }
             else
             {
