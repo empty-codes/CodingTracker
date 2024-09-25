@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Dapper;
+using System.Diagnostics;
 
 namespace CodingTracker
 {
@@ -18,29 +19,37 @@ namespace CodingTracker
 
         private void CreateDatabase()
         {
-            ConnectionString = "Data Source=coding_tracker.db;Provider=Microsoft.Data.SQLite";
+            ConnectionString = "Data Source=coding_tracker.db";
             DateFormat = "yyyy-MM-dd HH:mm";
             DatabasePath = "coding_tracker.db";
 
-            using var conn = new SqliteConnection(ConnectionString);
+            if (File.Exists(DatabasePath))
+            {
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabasePath);
+                Debug.WriteLine($"Database file {dbPath} already exists.");
+            }
+            else
+            {
+                using var conn = new SqliteConnection(ConnectionString);
 
-            var createTableQuery = @"
+                var createTableQuery = @"
                 CREATE TABLE IF NOT EXISTS CodingSessions (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     StartTime TEXT NOT NULL,
                     EndTime TEXT NOT NULL,
                     Duration TEXT NOT NULL
                 );";
-            try
-            {
-                conn.Execute(createTableQuery);
-                Console.WriteLine($"Database file {DatabasePath} successfully created. The database is ready to use.");
+                try
+                {
+                    conn.Execute(createTableQuery);
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabasePath);
+                    Debug.WriteLine($"Database file {DatabasePath} successfully created at {dbPath}. The database is ready to use.");
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"Error occurred while trying to create the database Table\n - Details: {e.Message}");
+                }
             }
-            catch (SqliteException e)
-            {
-                 Console.WriteLine($"Error occurred while trying to create the database Table\n - Details: {e.Message}");
-            }
-            
         }
     }
 }
