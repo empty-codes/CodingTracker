@@ -23,7 +23,7 @@
               ContentTemplate="{DataTemplate views:DeleteSessionPage}" />
         </Tab>
         <ShellContent Title="Real-Time Tracker"
-                      ContentTemplate="{DataTemplate views:RealTimeCodingTrackerPage}" />
+                      ContentTemplate="{DataTemplate views:RealTimeTrackerPage}" />
         <ShellContent Title="Coding Goals"
                       ContentTemplate="{DataTemplate views:CodingGoalsPage}" />
         <ShellContent Title="Reports"

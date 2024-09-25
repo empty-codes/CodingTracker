@@ -1,5 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
 using Dapper;
+using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
 namespace CodingTracker.Models
 {
@@ -44,11 +47,11 @@ namespace CodingTracker.Models
                 string getIdQuery = "SELECT last_insert_rowid();";
                 session.Id = conn.ExecuteScalar<int>(getIdQuery);
 
-                //AnsiConsole.MarkupLine($"[green]Session successfully added. (Session Id: {session.Id})[/]");
+                Debug.WriteLine($"Session successfully added. (Session Id: {session.Id})");
             }
             catch (SqliteException e)
             {
-                //AnsiConsole.MarkupLine($"[red]Error occurred while trying to insert your session\n - Details: {e.Message}[/]");
+                Debug.WriteLine($"Error occurred while trying to insert your session\n - Details: {e.Message}");
             }
         }
 
@@ -73,7 +76,7 @@ namespace CodingTracker.Models
             }
             catch (SqliteException e)
             {
-                //.MarkupLine($"[red]Error occurred while trying to access your sessions\n - Details: {e.Message}[/]");
+                Debug.WriteLine($"Error occurred while trying to access your sessions\n - Details: {e.Message}");
             }
             return sessions;
         }
@@ -95,16 +98,16 @@ namespace CodingTracker.Models
 
                 if (result == 0)
                 {
-                    //AnsiConsole.MarkupLine($"[yellow]No session found with the provided Id: {session.Id}[/]");
+                    Debug.WriteLine($"No session found with the provided Id: {session.Id}");
                 }
                 else
                 {
-                    //AnsiConsole.MarkupLine($"[green]Session with Id: {session.Id} successfully updated.[/]");
+                    Debug.WriteLine($"Session with Id: {session.Id} successfully updated.");
                 }
             }
             catch (SqliteException e)
             {
-                //AnsiConsole.MarkupLine($"[red]Error occurred while trying to update your session\n - Details: {e.Message}[/]");
+                Debug.WriteLine($"Error occurred while trying to update your session\n - Details: {e.Message}");
             }
         }
 
@@ -118,16 +121,16 @@ namespace CodingTracker.Models
 
                 if (result == 0)
                 {
-                    //AnsiConsole.MarkupLine($"[yellow]No session found with the provided Id: {session.Id}[/]");
+                    Debug.WriteLine($"No session found with the provided Id: {session.Id}");
                 }
                 else
                 {
-                    //AnsiConsole.MarkupLine($"[green]Session with Id: {session.Id} successfully deleted.[/]");
+                    Debug.WriteLine($"Session with Id: {session.Id} successfully deleted.");
                 }
             }
             catch (SqliteException e)
             {
-                //AnsiConsole.MarkupLine($"[red]Error occurred while trying to delete your session\n - Details: {e.Message}[/]");
+                Debug.WriteLine($"Error occurred while trying to delete your session\n - Details: {e.Message}");
             }
         }
     }
