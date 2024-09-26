@@ -21,3 +21,10 @@ The TimePicker in .NET MAUI is designed to only display hours and minutes by def
 
 3. When a session is added through the realtime tracker, it does not show up in the view all sessions list, even though succesfully added to db unless program closed and reopened
 Fix: Ensures list of sessions are reloaded everyime the AllSessions page is navigated to
+
+4. The set goals page worked perfectly on desktop, also when i ran the program in vs with my android phone connected as a local device, but when i disconnected it, and opened the apk left on my phone, anytime i tried to open the set goals page, the app crashed.
+Tried to access the db path but it was stored in a hidden/restricted folder that simply did not show
+Used adb to get the logs of the error and debug that way, but the logs didnt saw much, did a couple changes then it started working so any of these could have been the fix:
+1. For example, the GoalStatus label is bound to a converter (StringNotEmptyConverter). Ensure the converter exists in your resource dictionary, and it's functioning correctly. so instead i  you can handle the visibility logic directly in your ViewModel by using a boolean property that determines whether the GoalStatus is visible. 
+2. register the route in your AppShell.xaml.cs file for the goal page (or any other pages) to ensure that your application can navigate to them correctly.
+3. cleared all app data, then unistalled the apk, then cleaned my memory and storage, then reinstalled

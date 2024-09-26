@@ -34,7 +34,7 @@
                     Format="yyyy-MM-dd"
                     HeightRequest="40" />
 
-        <Label Text="End Time:"
+        <Label Text="End Time: (Must be after Start Time):"
            FontSize="16"
            HorizontalOptions="Start" />
         <TimePicker x:Name="EndTimePicker"

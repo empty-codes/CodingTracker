@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Session" Command="{Binding NewCommand}" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
+        <ToolbarItem Text="Add Session" Command="{Binding NewCommand}" IconImageSource="{FontImage Glyph='+', Color=Black, Size=75}" />
     </ContentPage.ToolbarItems>
 
     <CollectionView x:Name="sessionsCollection"
@@ -28,11 +28,11 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <Label Text="{Binding Id, StringFormat='Session {0}'}" FontSize="22"/>
-                    <Label Text="{Binding Duration, StringFormat='Duration: {0}'}" FontSize="22"/>
+                    <Label Text="{Binding Id, StringFormat='Session {0}'}" FontSize="18"/>
+                    <Label Text="{Binding Duration, StringFormat='Duration: {0}'}" FontSize="18"/>
 
-                    <Label Text="{Binding FormattedStartTime, StringFormat='Started: {0}'}" FontSize="14" TextColor="Silver"/>
-                    <Label Text="{Binding FormattedEndTime, StringFormat='Stopped: {0}'}" FontSize="14" TextColor="Silver"/>
+                    <Label Text="{Binding FormattedStartTime, StringFormat='Started: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding FormattedEndTime, StringFormat='Stopped: {0}'}" FontSize="14"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

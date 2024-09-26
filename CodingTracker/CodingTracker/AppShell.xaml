@@ -12,20 +12,22 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Coding Sessions"
-              ContentTemplate="{DataTemplate views:ViewAllSessionsPage}" />
-        <ShellContent Title="Real-Time Tracker"
-                      ContentTemplate="{DataTemplate views:RealTimeTrackerPage}" />
-        <ShellContent Title="Coding Goals"
-                      ContentTemplate="{DataTemplate views:CodingGoalsPage}" />
-        <ShellContent Title="Reports"
-                      ContentTemplate="{DataTemplate views:ReportsPage}" />
-    </FlyoutItem>
+        <ShellContent Title="View"
+            ContentTemplate="{DataTemplate views:ViewAllSessionsPage}" 
+                      Icon="{OnPlatform 'icons8_view.png', iOS='icons8_view_ios.png', MacCatalyst='icons8_view_ios.png'}"/>
+ 
+        <ShellContent Title="Timer"
+                      ContentTemplate="{DataTemplate views:RealTimeTrackerPage}"
+                      Icon="{OnPlatform 'icons8_timer.png', iOS='icons8_timer_ios.png', MacCatalyst='icons8_timer_ios.png'}"/>
 
-    <MenuItem Text="Exit"
-              IconImageSource="help.png"
-              Command="{Binding HelpCommand}"
-              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />
+        <ShellContent Title="Goal"
+                    ContentTemplate="{DataTemplate views:CodingGoalsPage}" 
+                      Icon="{OnPlatform 'icons8_goal.png', iOS='icons8_goal_ios.png', MacCatalyst='icons8_goal_ios.png'}"/>
+
+        <ShellContent Title="Report"
+            ContentTemplate="{DataTemplate views:ReportsPage}" 
+                      Icon="{OnPlatform 'icons8_report.png', iOS='icons8_report_ios.png', MacCatalyst='icons8_report_ios.png'}"/>
+    </FlyoutItem>
 
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter />

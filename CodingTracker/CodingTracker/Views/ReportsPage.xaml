@@ -14,7 +14,6 @@
         <Label Text="Report Summary"
                FontSize="24"
                FontAttributes="Bold"
-               TextColor="Yellow"
                HorizontalOptions="Center" />
 
         <Grid Margin="0, 10, 0, 0">
@@ -34,13 +33,11 @@
 
             <Label Text="Metric"
                    FontAttributes="Bold"
-                   TextColor="Yellow" 
                    Grid.Row="0" 
                    HorizontalOptions="Start" />
 
             <Label Text="Value"
                    FontAttributes="Bold"
-                   TextColor="Yellow" 
                    Grid.Row="0" 
                    Grid.Column="1"
                    HorizontalOptions="Start" />
