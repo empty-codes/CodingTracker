@@ -31,8 +31,8 @@
                     <Label Text="{Binding Id, StringFormat='Session {0}'}" FontSize="22"/>
                     <Label Text="{Binding Duration, StringFormat='Duration: {0}'}" FontSize="22"/>
 
-                    <Label Text="{Binding StartTime, StringFormat='Start: {0}'}" FontSize="14" TextColor="Silver"/>
-                    <Label Text="{Binding EndTime, StringFormat='Stop: {0}'}" FontSize="14" TextColor="Silver"/>
+                    <Label Text="{Binding FormattedStartTime, StringFormat='Started: {0}'}" FontSize="14" TextColor="Silver"/>
+                    <Label Text="{Binding FormattedEndTime, StringFormat='Stopped: {0}'}" FontSize="14" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

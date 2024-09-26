@@ -58,6 +58,9 @@ internal class CodingSessionViewModel : ObservableObject, IQueryAttributable
     public DateTime CombinedStartTime => StartDate.Date + StartTime;
     public DateTime CombinedEndTime => EndDate.Date + EndTime;
 
+    public string FormattedStartTime => CombinedStartTime.ToString("yyyy-MM-dd HH:mm");
+    public string FormattedEndTime => CombinedEndTime.ToString("yyyy-MM-dd HH:mm");
+
     public TimeSpan Duration
     {
         get => codingSession.Duration;

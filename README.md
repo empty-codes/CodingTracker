@@ -18,3 +18,6 @@ Fix: Registered the page for navigation using routes in AppShell.xaml.cs
 2. When i tap a session from list nothing happens, ended up splitting start and end info date and time entries for easier user input
 
 The TimePicker in .NET MAUI is designed to only display hours and minutes by default, which is why you’re not seeing seconds in the UI even though you've set the format to "HH:mm:ss
+
+3. When a session is added through the realtime tracker, it does not show up in the view all sessions list, even though succesfully added to db unless program closed and reopened
+Fix: Ensures list of sessions are reloaded everyime the AllSessions page is navigated to
