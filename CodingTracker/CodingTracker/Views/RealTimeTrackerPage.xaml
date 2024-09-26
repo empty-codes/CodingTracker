@@ -4,9 +4,11 @@
              xmlns:viewModels="clr-namespace:CodingTracker.ViewModels"
              x:Class="CodingTracker.Views.RealTimeTrackerPage"
              Title="Real-Time Tracker">
+    
     <ContentPage.BindingContext>
         <viewModels:RealTimeTrackerViewModel />
     </ContentPage.BindingContext>
+    
     <VerticalStackLayout Spacing="10" Margin="5">
 
         <Label Text="{Binding StopwatchStatus}" 
@@ -21,7 +23,6 @@
             <Button Grid.Column="1"
                 Text="Stop Stopwatch"
                 Command="{Binding StopCommand}"/>
-
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

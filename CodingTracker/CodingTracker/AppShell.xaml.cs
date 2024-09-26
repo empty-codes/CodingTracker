@@ -1,13 +1,11 @@
-﻿namespace CodingTracker
+﻿namespace CodingTracker;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            Routing.RegisterRoute(nameof(Views.CodingSessionPage), typeof(Views.CodingSessionPage));
-
-        }
+        Routing.RegisterRoute(nameof(Views.CodingSessionPage), typeof(Views.CodingSessionPage));
     }
 }

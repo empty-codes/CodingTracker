@@ -4,12 +4,12 @@
              xmlns:viewModels="clr-namespace:CodingTracker.ViewModels"
              x:Class="CodingTracker.Views.CodingGoalsPage"
              Title="Coding Goals">
+    
     <ContentPage.BindingContext>
         <viewModels:CodingGoalsViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout Padding="20" Spacing="10">
-        <!-- Goal Hours -->
         <Label Text="How many coding hours do you want to achieve?" FontAttributes="Bold" />
         <Entry x:Name="GoalHoursEntry"
                Text="{Binding GoalHours}" 
@@ -17,18 +17,15 @@
                Placeholder="Enter hours"
                HeightRequest="40" />
 
-        <!-- Target Date -->
         <Label Text="What is your target date to complete this goal?" FontAttributes="Bold" />
         <DatePicker x:Name="GoalDeadlineDatePicker"
                     Date="{Binding GoalDeadline}"
                     Format="yyyy-MM-dd"
                     HeightRequest="40" />
 
-        <!-- Submit Button -->
         <Button Text="Set Goal"
                 Command="{Binding SetGoalCommand}" />
 
-        <!-- Goal Status -->
         <Label Text="{Binding GoalStatus}" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding GoalStatus, Converter={StaticResource StringNotEmptyConverter}}" />
     </StackLayout>
 </ContentPage>

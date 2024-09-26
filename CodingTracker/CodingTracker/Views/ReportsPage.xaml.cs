@@ -8,14 +8,12 @@ public partial class ReportsPage : ContentPage
 	{
 		InitializeComponent();
 	}
-
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
         var report = new ReportsViewModel();
         var sessions = Models.CodingSession.ViewAllSessions();
         report.GenerateReport(sessions);
     }
-
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -23,5 +21,4 @@ public partial class ReportsPage : ContentPage
         var viewModel = BindingContext as ReportsViewModel;
         viewModel?.RefreshReport();
     }
-
 }

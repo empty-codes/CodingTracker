@@ -5,10 +5,11 @@
              x:Class="CodingTracker.Views.ReportsPage"
              Title="Reports"
              NavigatedTo="ContentPage_NavigatedTo">
+
     <ContentPage.BindingContext>
         <viewModels:ReportsViewModel />
     </ContentPage.BindingContext>
-    
+
     <VerticalStackLayout Padding="10">
         <Label Text="Report Summary"
                FontSize="24"
@@ -21,6 +22,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

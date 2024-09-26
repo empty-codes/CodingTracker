@@ -5,6 +5,7 @@
              x:Class="CodingTracker.Views.ViewAllSessionsPage"
              Title="All Sessions"
              NavigatedTo="ContentPage_NavigatedTo">
+    
     <ContentPage.BindingContext>
         <viewModels:ViewAllSessionsViewModel />
     </ContentPage.BindingContext>
@@ -23,7 +24,6 @@
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
         </CollectionView.ItemsLayout>
-
 
         <CollectionView.ItemTemplate>
             <DataTemplate>

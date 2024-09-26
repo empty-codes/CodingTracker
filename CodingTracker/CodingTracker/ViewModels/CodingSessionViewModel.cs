@@ -135,7 +135,6 @@ internal class CodingSessionViewModel : ObservableObject, IQueryAttributable
                 RefreshProperties();
             }
         }
-
         else
         {
             Debug.WriteLine("Invalid session Id provided.");
@@ -175,8 +174,4 @@ internal class CodingSessionViewModel : ObservableObject, IQueryAttributable
         OnPropertyChanged(nameof(EndDate));
         OnPropertyChanged(nameof(Duration));
     }
-
-
 }
-
-

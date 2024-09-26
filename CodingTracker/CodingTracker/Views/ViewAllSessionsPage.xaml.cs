@@ -18,5 +18,4 @@ public partial class ViewAllSessionsPage : ContentPage
         }
         sessionsCollection.SelectedItem = null;
     }
-
 }

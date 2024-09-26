@@ -3,7 +3,6 @@ using Dapper;
 using System.Diagnostics;
 
 namespace CodingTracker.Models;
-
 internal class CodingSession
 {
     public int Id { get; set; }
@@ -157,6 +156,4 @@ internal class CodingSession
             return null;
         }
     }
-
 }
-

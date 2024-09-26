@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using CodingTracker.Models;
 using System.Diagnostics;
 
 namespace CodingTracker.ViewModels;
@@ -51,7 +50,6 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
             string sessionId = query["deleted"].ToString();
             CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
 
-            // If session exists, delete it
             if (matchedSession != null)
                 AllSessions.Remove(matchedSession);
         }
@@ -59,18 +57,15 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
         {
             string sessionId = query["saved"].ToString();
 
-            // Convert sessionId to an integer
             if (int.TryParse(sessionId, out int id))
             {
                 CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
 
-                // If session is found, update it
                 if (matchedSession != null)
                 {
                     matchedSession.Reload();
                     AllSessions.Move(AllSessions.IndexOf(matchedSession), 0);
                 }
-                // If session isn't found, it's new; add it.
                 else
                 {
                     AllSessions.Insert(0, new CodingSessionViewModel(Models.CodingSession.LoadSession(id)));
@@ -82,6 +77,4 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
             }
         }
     }
-
 }
-

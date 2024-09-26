@@ -4,9 +4,11 @@
              xmlns:viewModels="clr-namespace:CodingTracker.ViewModels"
              x:Class="CodingTracker.Views.CodingSessionPage"
              Title="Session">
+    
     <ContentPage.BindingContext>
         <viewModels:CodingSessionViewModel />
     </ContentPage.BindingContext>
+    
     <VerticalStackLayout Spacing="10" Margin="5">
         <Label Text="Start Date:"
            FontSize="16"
