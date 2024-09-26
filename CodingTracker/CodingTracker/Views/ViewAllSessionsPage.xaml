@@ -15,13 +15,15 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout Padding="20">
+        <StackLayout Padding="10">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="Filter By:" FontSize="16" VerticalOptions="Center" Padding="0,0,10,0"/>
+                <Label Text="Filter By:" FontSize="16" VerticalOptions="Center" Padding="0,0,2,0"/>
                 <Picker x:Name="filterPicker"
                     SelectedIndexChanged="OnFilterChanged"
-                    WidthRequest="130"
-                    HeightRequest="16">
+                    Title="Select an option"
+                    WidthRequest="85"
+                    HeightRequest="40"
+                    TextColor="Black">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>All Sessions</x:String>
@@ -33,11 +35,12 @@
                     </Picker.ItemsSource>
                 </Picker>
 
-                <Label Text="Sort By:" FontSize="16" Margin="10,0,0,0" VerticalOptions="Center" Padding="0,0,10,0"/>
+                <Label Text="Sort By:" FontSize="16" Margin="10,0,0,0" VerticalOptions="Center" Padding="0,0,2,0"/>
                 <Picker x:Name="sortPicker"
                     SelectedIndexChanged="OnSortChanged"
-                    WidthRequest="200"
-                    HeightRequest="16">
+                    WidthRequest="145"
+                    HeightRequest="40"
+                    TextColor="Black">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Date Ascending</x:String>

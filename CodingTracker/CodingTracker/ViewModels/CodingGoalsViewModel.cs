@@ -52,8 +52,8 @@ internal class CodingGoalsViewModel : ObservableObject
         }
     }
 
-    private string goalStatus;
-    public string GoalStatus
+    private string? goalStatus;
+    public string? GoalStatus
     {
         get => goalStatus;
         set

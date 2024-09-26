@@ -9,7 +9,9 @@
 -MAUI apps take a longer time to load and are more error prone
 -Hard to find my db file when i created it so I wasn't sure if it was working or not
 -I'm not so good with UI design
+-First Time using await and async
 
+My biggest issue was setting .NET MAUI up, the workloads would either not install, or a platforming issue would occur, I totally uninstalled vs studio about 3 times before it finally worked for me. Wrote a piece on it: https://emptycodesalsowrites.hashnode.dev/automating-msi-uninstall
 
 Issues
 1. When the add session button was clicked, it was meant to navigate to the coding session page but nothing happened:
@@ -25,6 +27,8 @@ Fix: Ensures list of sessions are reloaded everyime the AllSessions page is navi
 4. The set goals page worked perfectly on desktop, also when i ran the program in vs with my android phone connected as a local device, but when i disconnected it, and opened the apk left on my phone, anytime i tried to open the set goals page, the app crashed.
 Tried to access the db path but it was stored in a hidden/restricted folder that simply did not show
 Used adb to get the logs of the error and debug that way, but the logs didnt saw much, did a couple changes then it started working so any of these could have been the fix:
-1. For example, the GoalStatus label is bound to a converter (StringNotEmptyConverter). Ensure the converter exists in your resource dictionary, and it's functioning correctly. so instead i  you can handle the visibility logic directly in your ViewModel by using a boolean property that determines whether the GoalStatus is visible. 
-2. register the route in your AppShell.xaml.cs file for the goal page (or any other pages) to ensure that your application can navigate to them correctly.
-3. cleared all app data, then unistalled the apk, then cleaned my memory and storage, then reinstalled
+    1. For example, the GoalStatus label is bound to a converter (StringNotEmptyConverter). Ensure the converter exists in your resource dictionary, and it's functioning correctly. so instead i  you can handle the visibility logic directly in your ViewModel by using a boolean property that determines whether the GoalStatus is visible. 
+    2. register the route in your AppShell.xaml.cs file for the goal page (or any other pages) to ensure that your application can navigate to them correctly.
+    3. cleared all app data, then unistalled the apk, then cleaned my memory and storage, then reinstalled
+
+5. Usage of IQueryAttributable; it was used in the maui docs tutorial i followed so i was inclined to use it, but i didnt undestand the point of it at first, learnt its use and importance: In your code, implementing IQueryAttributable is likely helping you manage navigation more effectively by allowing you to specify and handle query parameters in a structured manner.  

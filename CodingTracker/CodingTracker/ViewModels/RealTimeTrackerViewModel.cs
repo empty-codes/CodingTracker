@@ -7,14 +7,14 @@ namespace CodingTracker.ViewModels;
 
 internal class RealTimeTrackerViewModel : ObservableObject
 {
-    private Models.CodingSession codingSession;
+    private Models.CodingSession? codingSession;
     public Stopwatch StopWatch { get; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
     public TimeSpan Duration { get; set; }
     public bool IsRunning { get; set; }
-    private string status;
-    public string StopwatchStatus
+    private string? status;
+    public string? StopwatchStatus
     {
         get => status;
         set

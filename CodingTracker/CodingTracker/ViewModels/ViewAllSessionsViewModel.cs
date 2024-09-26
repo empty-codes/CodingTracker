@@ -46,7 +46,7 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
         Shell.Current.GoToAsync(nameof(Views.CodingSessionPage));
     }
 
-    private void SelectSession(ViewModels.CodingSessionViewModel session)
+    private void SelectSession(ViewModels.CodingSessionViewModel? session)
     {
         if(session != null)
         {
@@ -117,19 +117,19 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
     {
         if (query.ContainsKey("deleted"))
         {
-            string sessionId = query["deleted"].ToString();
-            CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
+            string? sessionId = query["deleted"].ToString();
+            CodingSessionViewModel? matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
 
             if (matchedSession != null)
                 AllSessions.Remove(matchedSession);
         }
         else if (query.ContainsKey("saved"))
         {
-            string sessionId = query["saved"].ToString();
+            string? sessionId = query["saved"].ToString();
 
             if (int.TryParse(sessionId, out int id))
             {
-                CodingSessionViewModel matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
+                CodingSessionViewModel? matchedSession = AllSessions.FirstOrDefault(s => s.Id == sessionId);
 
                 if (matchedSession != null)
                 {
