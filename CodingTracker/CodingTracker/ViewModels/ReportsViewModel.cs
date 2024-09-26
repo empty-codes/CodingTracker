@@ -7,9 +7,9 @@ namespace CodingTracker.ViewModels;
 
 internal class ReportsViewModel : ObservableObject
 {
-    public ObservableCollection<ViewModels.CodingSessionViewModel> AllSessions { get; }
+    public ObservableCollection<ViewModels.CodingSessionViewModel>? AllSessions { get; }
     public TimeSpan TotalDuration { get; set; }
-    public string AverageDuration { get; set; }
+    public string? AverageDuration { get; set; }
     public int NumberOfSessions { get; set; }
     public string? LongestSession { get; set; }
     public string? ShortestSession { get; set; }

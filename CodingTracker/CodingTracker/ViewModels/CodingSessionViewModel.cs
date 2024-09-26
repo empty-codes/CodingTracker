@@ -8,7 +8,6 @@ namespace CodingTracker.ViewModels;
 internal class CodingSessionViewModel : ObservableObject, IQueryAttributable
 {
     private Models.CodingSession codingSession;
-
     public string Id => codingSession.Id.ToString();
     private DateTime startDate;
     private TimeSpan startTime;
@@ -57,7 +56,6 @@ internal class CodingSessionViewModel : ObservableObject, IQueryAttributable
 
     public DateTime CombinedStartTime => StartDate.Date + StartTime;
     public DateTime CombinedEndTime => EndDate.Date + EndTime;
-
     public string FormattedStartTime => CombinedStartTime.ToString("yyyy-MM-dd HH:mm");
     public string FormattedEndTime => CombinedEndTime.ToString("yyyy-MM-dd HH:mm");
 

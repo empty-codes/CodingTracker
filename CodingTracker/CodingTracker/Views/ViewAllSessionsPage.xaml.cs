@@ -18,4 +18,22 @@ public partial class ViewAllSessionsPage : ContentPage
         }
         sessionsCollection.SelectedItem = null;
     }
+
+    private void OnFilterChanged(object sender, EventArgs e)
+    {
+        if (BindingContext is ViewAllSessionsViewModel viewModel)
+        {
+            viewModel.SelectedFilterIndex = filterPicker.SelectedIndex;
+            viewModel.ApplyFilterAndSort();
+        }
+    }
+
+    private void OnSortChanged(object sender, EventArgs e)
+    {
+        if (BindingContext is ViewAllSessionsViewModel viewModel)
+        {
+            viewModel.SelectedSortIndex = sortPicker.SelectedIndex;
+            viewModel.ApplyFilterAndSort();
+        }
+    }
 }

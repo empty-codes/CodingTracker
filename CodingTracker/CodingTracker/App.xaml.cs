@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Dapper;
 using System.Diagnostics;
-using Microsoft.Maui.ApplicationModel;
 
 namespace CodingTracker;
 public partial class App : Application

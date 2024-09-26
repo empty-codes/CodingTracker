@@ -8,7 +8,6 @@ namespace CodingTracker.ViewModels;
 internal class CodingGoalsViewModel : ObservableObject
 {
     private readonly List<CodingSession> _sessions;
-
     private int goalHours;
     public int GoalHours
     {
@@ -76,7 +75,6 @@ internal class CodingGoalsViewModel : ObservableObject
         }
     }
 
-
     public CodingGoalsViewModel()
     {
         _sessions = Models.CodingSession.ViewAllSessions();
@@ -102,7 +100,6 @@ internal class CodingGoalsViewModel : ObservableObject
     }
 
     public ICommand SetGoalCommand { get; private set; }
-
     public void SetGoal()
     {
         int daysLeft = (GoalDeadline - DateTime.Now).Days;
