@@ -91,7 +91,8 @@ internal class CodingSession
 
             if (result == 0)
             {
-                Debug.WriteLine($"No session found with the provided Id: {session.Id}");
+                Debug.WriteLine($"No session found with the provided Id: {session.Id}. A new session will be created now.");
+                InsertSession(session);
             }
             else
             {
@@ -134,14 +135,19 @@ internal class CodingSession
 
         try
         {
-            var session = conn.QuerySingleOrDefault<CodingSession>(query, new { Id = id });
-
-            if (session != null)
+            var rawSession = conn.QuerySingleOrDefault(query, new { Id = id });
+            if (rawSession == null)
             {
-                session.StartTime = DateTime.ParseExact(session.StartTime.ToString(), App.DateFormat, null);
-                session.EndTime = DateTime.ParseExact(session.EndTime.ToString(), App.DateFormat, null);
-                session.Duration = TimeSpan.Parse(session.Duration.ToString());
+                Debug.WriteLine($"No session found with the provided Id: {id}");
             }
+
+            CodingSession session = new CodingSession
+            {
+                Id = (int)rawSession.Id,
+                StartTime = DateTime.ParseExact(rawSession.StartTime, App.DateFormat, null),
+                EndTime = DateTime.ParseExact(rawSession.EndTime, App.DateFormat, null),
+                Duration = TimeSpan.Parse(rawSession.Duration)
+            };
 
             return session;
         }
@@ -151,7 +157,6 @@ internal class CodingSession
             return null;
         }
     }
-
 
 }
 
