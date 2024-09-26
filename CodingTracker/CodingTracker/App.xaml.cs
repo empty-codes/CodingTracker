@@ -31,13 +31,14 @@ public partial class App : Application
             readStatus = await Permissions.RequestAsync<Permissions.StorageRead>();
         }
 
-        if (writeStatus == PermissionStatus.Granted && readStatus == PermissionStatus.Granted)
+        if (writeStatus != PermissionStatus.Granted || readStatus != PermissionStatus.Granted)
         {
-            Debug.WriteLine("Storage read and write permissions granted.");
+            Debug.WriteLine("Storage permissions denied.");
+            throw new UnauthorizedAccessException("Storage permissions are required to save goals.");
         }
         else
         {
-            Debug.WriteLine("Storage read or write permissions denied.");
+            Debug.WriteLine("Storage read and write permissions granted.");
         }
     }
 
@@ -62,10 +63,21 @@ public partial class App : Application
                     EndTime TEXT NOT NULL,
                     Duration TEXT NOT NULL
                 );";
+
+            var createGoalsTableQuery = @"
+            CREATE TABLE IF NOT EXISTS Goals (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                GoalHours INTEGER NOT NULL,
+                GoalDeadline TEXT NOT NULL,
+                CurrentHours REAL NOT NULL,
+                DailyTarget REAL NOT NULL,
+                GoalStatus TEXT NOT NULL
+            );";
             try
             {
                 conn.Open();
                 conn.Execute(createTableQuery);
+                conn.Execute(createGoalsTableQuery);
                 string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabasePath);
                 Debug.WriteLine($"Database file {DatabasePath} successfully created at {dbPath}. The database is ready to use.");
             }

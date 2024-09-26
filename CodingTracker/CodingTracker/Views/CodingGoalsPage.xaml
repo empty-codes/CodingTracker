@@ -10,14 +10,14 @@
     </ContentPage.BindingContext>
 
     <StackLayout Padding="20" Spacing="10">
-        <Label Text="How many coding hours do you want to achieve?" FontAttributes="Bold" />
+        <Label Text="How many coding hours do you want to achieve?" FontSize="18"/>
         <Entry x:Name="GoalHoursEntry"
                Text="{Binding GoalHours}" 
                Keyboard="Numeric"
                Placeholder="Enter hours"
                HeightRequest="40" />
 
-        <Label Text="What is your target date to complete this goal?" FontAttributes="Bold" />
+        <Label Text="What is your target date to complete this goal?" FontSize="18"/>
         <DatePicker x:Name="GoalDeadlineDatePicker"
                     Date="{Binding GoalDeadline}"
                     Format="yyyy-MM-dd"
@@ -26,6 +26,10 @@
         <Button Text="Set Goal"
                 Command="{Binding SetGoalCommand}" />
 
-        <Label Text="{Binding GoalStatus}" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding GoalStatus, Converter={StaticResource StringNotEmptyConverter}}" />
+        <Label Text="{Binding GoalStatus}" 
+               TextColor="Green" 
+               FontSize="18" 
+               FontAttributes="Bold" 
+               IsVisible="{Binding IsGoalStatusVisible}" />
     </StackLayout>
 </ContentPage>

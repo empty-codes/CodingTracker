@@ -61,15 +61,42 @@ internal class CodingGoalsViewModel : ObservableObject
         {
             goalStatus = value;
             OnPropertyChanged(nameof(GoalStatus));
+            IsGoalStatusVisible = !string.IsNullOrEmpty(goalStatus);
         }
     }
 
+    private bool isGoalStatusVisible;
+    public bool IsGoalStatusVisible
+    {
+        get => isGoalStatusVisible;
+        set
+        {
+            isGoalStatusVisible = value;
+            OnPropertyChanged(nameof(IsGoalStatusVisible));
+        }
+    }
+
+
     public CodingGoalsViewModel()
     {
-        _sessions = Models.CodingSession.ViewAllSessions(); /
+        _sessions = Models.CodingSession.ViewAllSessions();
         CurrentHours = CalculateCurrentHours(_sessions);
 
-        GoalDeadline = DateTime.Now.Date;
+        var goals = Goal.LoadGoals();
+        if (goals.Count > 0)
+        {
+            var latestGoal = goals.Last(); 
+            GoalHours = latestGoal.GoalHours;
+            GoalDeadline = latestGoal.GoalDeadline;
+            CurrentHours = latestGoal.CurrentHours;
+            DailyTarget = latestGoal.DailyTarget;
+            GoalStatus = latestGoal.GoalStatus;
+        }
+        else
+        {
+            GoalHours = 0;
+            GoalDeadline = DateTime.Now.Date;
+        }
 
         SetGoalCommand = new RelayCommand(SetGoal);
     }
@@ -86,8 +113,19 @@ internal class CodingGoalsViewModel : ObservableObject
             return;
         }
 
-        DailyTarget = CalculateDailyTarget(daysLeft, goalHours);
-        UpdateGoalStatus(goalHours);
+        DailyTarget = CalculateDailyTarget(daysLeft, GoalHours);
+        UpdateGoalStatus(GoalHours);
+
+        var newGoal = new Goal
+        {
+            GoalHours = GoalHours,
+            GoalDeadline = GoalDeadline,
+            CurrentHours = CurrentHours,
+            DailyTarget = DailyTarget,
+            GoalStatus = GoalStatus
+        };
+
+        newGoal.SaveGoal();
     }
 
     private void UpdateGoalStatus(int goalHours)
