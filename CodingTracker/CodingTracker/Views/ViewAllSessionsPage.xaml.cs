@@ -4,7 +4,6 @@ namespace CodingTracker.Views;
 
 public partial class ViewAllSessionsPage : ContentPage
 {
-    private ViewAllSessionsViewModel viewModel;
     public ViewAllSessionsPage()
 	{
 		InitializeComponent();
