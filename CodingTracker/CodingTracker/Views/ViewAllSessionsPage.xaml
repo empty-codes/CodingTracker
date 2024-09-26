@@ -24,6 +24,7 @@
                     HeightRequest="16">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
+                            <x:String>All Sessions</x:String>
                             <x:String>Today</x:String>
                             <x:String>Last Week</x:String>
                             <x:String>Last Month</x:String>

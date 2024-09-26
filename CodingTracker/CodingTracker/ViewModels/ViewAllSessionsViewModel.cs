@@ -71,16 +71,19 @@ internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
 
         switch (filterChoice)
         {
-            case 0: 
+            case 0:
+                sessions = sessions.ToList();
+                break;
+            case 1:
                 sessions = sessions.Where(s => s.StartTime.Date == currentDate.Date).ToList();
                 break;
-            case 1: 
+            case 2: 
                 sessions = sessions.Where(s => s.StartTime.Date >= currentDate.AddDays(-7)).ToList();
                 break;
-            case 2: 
+            case 3: 
                 sessions = sessions.Where(s => s.StartTime.Date >= currentDate.AddMonths(-1)).ToList();
                 break;
-            case 3: 
+            case 4: 
                 sessions = sessions.Where(s => s.StartTime.Date >= currentDate.AddYears(-1)).ToList();
                 break;
             default:
