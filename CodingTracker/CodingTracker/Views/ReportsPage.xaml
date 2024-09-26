@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:CodingTracker.ViewModels"
              x:Class="CodingTracker.Views.ReportsPage"
-             Title="Reports">
+             Title="Reports"
+             NavigatedTo="ContentPage_NavigatedTo">
     <ContentPage.BindingContext>
         <viewModels:ReportsViewModel />
     </ContentPage.BindingContext>

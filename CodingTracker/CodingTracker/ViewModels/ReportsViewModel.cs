@@ -23,6 +23,14 @@ namespace CodingTracker.ViewModels
             GenerateReport(sessions);
         }
 
+        public void RefreshReport()
+        {
+            var sessions = Models.CodingSession.ViewAllSessions();
+            GenerateReport(sessions);
+            RefreshProperties();
+        }
+
+
         public void GenerateReport(List<CodingSession> sessions)
         {
             if (sessions.Count == 0)
@@ -42,5 +50,15 @@ namespace CodingTracker.ViewModels
 
             NumberOfSessions = sessions.Count;
         }
+
+        private void RefreshProperties()
+        {
+            OnPropertyChanged(nameof(TotalDuration));
+            OnPropertyChanged(nameof(AverageDuration));
+            OnPropertyChanged(nameof(NumberOfSessions));
+            OnPropertyChanged(nameof(LongestSession));
+            OnPropertyChanged(nameof(ShortestSession));
+        }
     }
+
 }
