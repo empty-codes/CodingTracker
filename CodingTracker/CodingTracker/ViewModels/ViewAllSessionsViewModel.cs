@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using CodingTracker.Models;
@@ -6,7 +7,7 @@ using System.Diagnostics;
 
 namespace CodingTracker.ViewModels;
 
-internal class ViewAllSessionsViewModel : IQueryAttributable
+internal class ViewAllSessionsViewModel : ObservableObject, IQueryAttributable
 {
     public ObservableCollection<ViewModels.CodingSessionViewModel> AllSessions { get; }
     public ICommand NewCommand { get; }
@@ -14,9 +15,20 @@ internal class ViewAllSessionsViewModel : IQueryAttributable
 
     public ViewAllSessionsViewModel()
     {
-        AllSessions = new ObservableCollection<ViewModels.CodingSessionViewModel>(Models.CodingSession.ViewAllSessions().Select(n => new CodingSessionViewModel(n)));
+        AllSessions = new ObservableCollection<ViewModels.CodingSessionViewModel>();
         NewCommand = new RelayCommand(NewSession);
         SelectSessionCommand = new RelayCommand<ViewModels.CodingSessionViewModel>(SelectSession);
+        LoadAllSessions();
+    }
+
+    public void LoadAllSessions()
+    {
+        AllSessions.Clear();
+        var sessions = Models.CodingSession.ViewAllSessions();
+        foreach (var session in sessions)
+        {
+            AllSessions.Add(new CodingSessionViewModel(session));
+        }
     }
 
     private void NewSession()

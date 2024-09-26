@@ -2,13 +2,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace CodingTracker.ViewModels
 {
     internal class RealTimeTrackerViewModel: ObservableObject
     {
         private Models.CodingSession codingSession;
-
         public Stopwatch StopWatch { get; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -25,7 +25,7 @@ namespace CodingTracker.ViewModels
                     OnPropertyChanged();
                 }
             }
-        } 
+        }
 
         public RealTimeTrackerViewModel()
         {
@@ -81,6 +81,8 @@ namespace CodingTracker.ViewModels
             codingSession.EndTime = EndTime;
             codingSession.Duration = Duration;
             codingSession.InsertSession(codingSession);
+
+            Shell.Current.GoToAsync($"..?saved={codingSession.Id.ToString()}");
         }
 
         public void CalculateDuration()
