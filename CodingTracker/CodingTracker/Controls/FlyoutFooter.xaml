@@ -4,11 +4,12 @@
              x:Class="CodingTracker.Controls.FlyoutFooter">
     <StackLayout>
         <Label Text="empty-codes"
-               TextColor="GhostWhite"
+               FontSize="18"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
-        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM, yyyy}'}"
-               TextColor="GhostWhite"
-               HorizontalOptions="Center" />
+        <Label 
+            FontSize="16"
+            Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM, yyyy}'}"
+            HorizontalOptions="Center" />
     </StackLayout>
 </ContentView>
