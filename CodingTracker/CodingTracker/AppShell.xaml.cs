@@ -5,6 +5,9 @@
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(nameof(Views.CodingSessionPage), typeof(Views.CodingSessionPage));
+
         }
     }
 }
