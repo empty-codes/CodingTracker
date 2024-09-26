@@ -4,13 +4,13 @@
 
 **Coding Tracker** is a cross-platform application built with .NET MAUI designed to log and manage coding sessions. Users can add, update, view, and delete coding sessions, as well as generate reports based on their recorded data. The application utilizes a SQLite database for data storage and Dapper ORM for data access.
 
-![Flyout](PreviewImages/flyout.PNG)
-![Home Page](PreviewImages/view.PNG)
-![Filtered Sessions](PreviewImages/filteredview.PNG)
-![Save/Delete Session](PreviewImages/session.PNG)
-![Real-time Tracker](PreviewImages/tracker.PNG)
-![Coding Goal](PreviewImages/goals.PNG)
-![Report](PreviewImages/report.PNG)
+![Flyout](PreviewImages/flyout.jpg)
+![Home Page](PreviewImages/view.jpg)
+![Filtered Sessions](PreviewImages/filteredview.jpg)
+![Save/Delete Session](PreviewImages/session.jpg)
+![Real-time Tracker](PreviewImages/tracker.jpg)
+![Coding Goal](PreviewImages/goals.jpg)
+![Report](PreviewImages/report.jpg)
 
 ## Requirements
 
