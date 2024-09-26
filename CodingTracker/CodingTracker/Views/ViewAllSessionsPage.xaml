@@ -20,10 +20,8 @@
                 <Label Text="Filter By:" FontSize="16" VerticalOptions="Center" Padding="0,0,2,0"/>
                 <Picker x:Name="filterPicker"
                     SelectedIndexChanged="OnFilterChanged"
-                    Title="Select an option"
                     WidthRequest="85"
-                    HeightRequest="40"
-                    TextColor="Black">
+                    HeightRequest="40">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>All Sessions</x:String>
@@ -39,8 +37,7 @@
                 <Picker x:Name="sortPicker"
                     SelectedIndexChanged="OnSortChanged"
                     WidthRequest="145"
-                    HeightRequest="40"
-                    TextColor="Black">
+                    HeightRequest="40">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Date Ascending</x:String>
