@@ -8,19 +8,41 @@
         <viewModels:CodingSessionViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout Spacing="10" Margin="5">
-        <Entry x:Name="StartTimeEntry"
-               Placeholder="Enter the new start time using the 24H format (yyyy-MM-dd HH:mm)"
-               Text="{Binding StartTime}"
-               HeightRequest="40" />
+        <Label Text="Start Date:"
+           FontSize="16"
+           HorizontalOptions="Start" />
+        <DatePicker x:Name="StartDatePicker"
+                    Date="{Binding StartDate}"
+                    Format="yyyy-MM-dd"
+                    HeightRequest="40" />
 
-        <Entry x:Name="EndTimeEntry"
-               Placeholder="Enter the new end time using the 24H format (yyyy-MM-dd HH:mm)"
-               Text="{Binding EndTime}"
-               HeightRequest="40" />
+        <Label Text="Start Time:"
+           FontSize="16"
+           HorizontalOptions="Start" />
+        <TimePicker x:Name="StartTimePicker"
+                    Time="{Binding StartTime}"
+                    Format="HH:mm"
+                    HeightRequest="40" />
+
+        <Label Text="End Date:"
+           FontSize="16"
+           HorizontalOptions="Start" />
+        <DatePicker x:Name="EndDatePicker"
+                    Date="{Binding EndDate}"
+                    Format="yyyy-MM-dd"
+                    HeightRequest="40" />
+
+        <Label Text="End Time:"
+           FontSize="16"
+           HorizontalOptions="Start" />
+        <TimePicker x:Name="EndTimePicker"
+                    Time="{Binding EndTime}"
+                    Format="HH:mm"
+                    HeightRequest="40" />
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
-            <Button Text="Update"
-                    Command="{Binding UpdateCommand}"/>
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"/>
 
             <Button Grid.Column="1"
                     Text="Delete"
